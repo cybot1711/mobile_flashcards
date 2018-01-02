@@ -28,6 +28,7 @@ export default ({ title, questions, navigation }) =>
   <Deck onPress={() => navigation.navigate('DeckDetail',{
     title: title,
     cards: questions.length,
+    questions: questions,
   })}>
     <MaterialCommunityIcons
       name='cards-playing-outline'

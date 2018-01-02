@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import { View, Text, TextInput, TouchableOpacit, Button } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacit,
+  Button,
+  CheckBox,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { orange, red, white } from '../utils/colors';
 import { HeadingText } from './Deck';
 // import Button from './Button';
 import { addDeck } from '../actions';
 
-const Container = styled.View`
+const Container = styled.KeyboardAvoidingView`
   flex: 1;
   background-color: ${orange};
   align-items: center;
@@ -31,8 +39,9 @@ class NewDeck extends Component {
         title: this.state.text,
         cards: 0,
       });
+      this.input.clear();
     } else {
-      this.setState({error: true})
+      this.setState({ error: true })
     }
   };
 
@@ -61,7 +70,6 @@ class NewDeck extends Component {
           onChangeText={text => this.setState({ text })}
           underlineColorAndroid={'transparent'}
           placeholder={'Enter a title'}/>
-        {this.state.error && <Text style={{color: red}}>Cannot be Blank</Text>}
         <Button title={'Submit'}
                 style={{ marginTop: 10 }}
                 onPress={this.handleSubmit}/>

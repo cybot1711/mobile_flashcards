@@ -11,7 +11,9 @@ import { purple, white, red } from './utils/colors'
 import CustomStatusBar from './components/CustomStatusBar';
 import Decks from './components/Decks';
 import DeckDetail from './components/DeckDetail';
+import Quiz from './components/Quiz';
 import NewDeck from "./components/NewDeck";
+import NewCard from "./components/NewCard";
 import reducer from './reducers'
 
 const config = {
@@ -46,9 +48,6 @@ const Tabs = TabNavigator({
     }
   },
   {
-    navigationOptions: {
-      header: null,
-    },
     tabBarOptions: {
       activeTintColor: Platform.OS === 'ios' ? purple : white,
       style: {
@@ -70,9 +69,9 @@ const MainNavigator = StackNavigator({
     screen: Tabs,
     navigationOptions: {
       title: "Flash Cards",
-      headerTintColor: "white",
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: purple
 
       }
     }
@@ -80,9 +79,27 @@ const MainNavigator = StackNavigator({
   DeckDetail: {
     screen: DeckDetail,
     navigationOptions: {
-      headerTintColor: "white",
+      headerTintColor: white,
       headerStyle: {
-        backgroundColor: "purple"
+        backgroundColor: purple
+      }
+    }
+  },
+  NewCard: {
+    screen: NewCard,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
+      }
+    }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple
       }
     }
   }
