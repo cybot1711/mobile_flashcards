@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { View, Text, Button } from 'react-native';
 import { orange, red } from '../utils/colors';
-import { HeadingText, TrailingText } from './Deck';
+import { HeadingText, TrailingText } from './DeckStyles';
 
 const Container = styled.View`
  flex: 1;
@@ -13,7 +13,7 @@ const Container = styled.View`
  justify-content: center;
 `;
 
-class DeckDetail extends Component {
+class DeckDetail extends PureComponent {
   static navigationOptions = ({ navigation }) => ({
     title: navigation.state.params.title,
   });
@@ -42,14 +42,14 @@ class DeckDetail extends Component {
           width: 180
         }}>
           <Button title={'Start Quiz'} onPress={() => this.props.navigation.navigate('Quiz', {
-            title: `Quiz - ${title}`,
+            title: title,
             questions: questions,
           })}/>
         </View>
       </Container>
     )
   }
-};
+}
 
 const mapStateToProps = state => ({
   data: state,

@@ -1,5 +1,4 @@
-export const ADD_CARD = 'ADD_CARD';
-export const ADD_DECK = 'ADD_DECK';
+import { ADD_CARD, ADD_DECK } from './types';
 
 export const addDeck = (item) => ({
   type: ADD_DECK,

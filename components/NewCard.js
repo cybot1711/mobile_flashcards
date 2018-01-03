@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/native';
 import { connect } from 'react-redux';
 import {
   View,
@@ -11,16 +10,10 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { orange, red, white } from '../utils/colors';
-import { HeadingText } from './Deck';
+import { red } from '../utils/colors';
+import { HeadingText } from './DeckStyles';
 import { addCard } from '../actions';
-
-const Container = styled.KeyboardAvoidingView`
-  flex: 1;
-  background-color: ${orange};
-  align-items: center;
-  justify-content: center;
-`;
+import { Input, Container } from './NewcardStyles'
 
 class NewCard extends Component {
   constructor(props) {
@@ -60,43 +53,32 @@ class NewCard extends Component {
         <HeadingText style={{ textAlign: 'center' }}>
           Enter A New Card
         </HeadingText>
-        <TextInput
-          style={{
-            height: 40,
-            width: 280,
-            marginTop: 15,
-            color: white,
-            borderBottomColor: red,
-            borderBottomWidth: 3
-          }}
-          ref={input => {
+        <Input
+          innerRef={input => {
             this.input = input;
           }}
           onChangeText={text => this.setState({ question: text })}
           underlineColorAndroid={'transparent'}
           placeholder={'Enter a question'}/>
-        <TextInput
-          style={{
-            height: 40,
-            width: 280,
-            marginTop: 15,
-            color: white,
-            borderBottomColor: red,
-            borderBottomWidth: 3
-          }}
-          ref={input => {
+        <Input
+          innerRef={input => {
             this.inputTwo = input;
           }}
           onChangeText={text => this.setState({ answer: text })}
           underlineColorAndroid={'transparent'}
           placeholder={'Enter a answer'}/>
         {this.state.error && <Text style={{ color: red }}>Cannot be Blank</Text>}
-        <Text style={{ marginTop: 10 }}>Check if answer is True. Leave unchecked for false</Text>
+        <Text style={{ marginTop: 10 }}>
+          Check if answer is True. Leave unchecked for false
+        </Text>
         <CheckBox onChange={() => this.setState({ isTrue: true })}/>
         {this.state.error && <Text style={{ color: red }}>Cannot be Blank</Text>}
         <Button title={'Submit'}
                 style={{ marginTop: 10 }}
-                onPress={this.handleSubmit}/>
+                onPress={() => {
+                  this.handleSubmit();
+                  this.props.navigation.goBack();
+                }}/>
       </Container>
     )
   }

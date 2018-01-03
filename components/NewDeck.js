@@ -12,8 +12,7 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { orange, red, white } from '../utils/colors';
-import { HeadingText } from './Deck';
-// import Button from './Button';
+import { HeadingText } from './DeckStyles';
 import { addDeck } from '../actions';
 
 const Container = styled.KeyboardAvoidingView`
